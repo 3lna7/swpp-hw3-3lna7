@@ -11,10 +11,9 @@ class Login extends Component {
     }
     login() {
         console.log(this.state);
-        var Email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (this.state == null) { alert('Email or password is wrong') }
-        else {
-            fetch('http://localhost:3001/user?q=' + this.state.email).then((data) => {
+        if (!this.state.email || !this.state.password) { alert('Email or password is wrong') }
+        else if (this.state.email && this.state.password) {
+            fetch('http://localhost:3000/user?q=' + this.state.email).then((data) => {
                 data.json().then((resp) => {
                     // resp = Array.from(resp)
                     console.log('resp is ', resp, resp.length, typeof resp);
@@ -27,6 +26,7 @@ class Login extends Component {
                 })
             })
         }
+        else {alert('Email or password is wrong')}
         // axios.get(`http://localhost:3001/user?q=${this.state.email}`)
         //     .then(resp => {
         //         console.log(resp.data, resp.data.length);

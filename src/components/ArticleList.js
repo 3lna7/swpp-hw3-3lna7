@@ -12,7 +12,7 @@ class ArticleList extends Component {
         this.getData()
     }
     getData() {
-        fetch("http://localhost:3001/articles").then(
+        fetch("http://localhost:3000/articles").then(
             (response) => {
                 response.json().then(
                     (result) => {
@@ -23,8 +23,7 @@ class ArticleList extends Component {
         )
     }
     delete(id) {
-        // alert('deleted')
-        fetch("http://localhost:3001/articles/" + id, {
+        fetch("http://localhost:3000/articles/" + id, {
             method: "DELETE",
             body: JSON.stringify(this.state)
         }).then((result) => {
@@ -52,6 +51,7 @@ class ArticleList extends Component {
                                     <div style={{ maxWidth: '768px', margin: '0 auto' }}>
 
                                         <h2 style={{ textAlign: 'justify' }}><span>{item.author_id}-</span> {item.title}</h2>
+                                        <p style={{ textAlign: 'justify' }}>{item.author_id}</p>
                                         <p style={{ textAlign: 'justify' }}>{item.content}</p>
                                         <Link to={"/articles/" + item.id + "/edit"}><button style={{ padding: '5px 8px', fontWeight: 'bold' }}>Edit Article </button></Link>
                                         <button onClick={() => { this.delete(item.id) }} style={{ padding: '5px 8px', fontWeight: 'bold' }}>Delete Article </button>

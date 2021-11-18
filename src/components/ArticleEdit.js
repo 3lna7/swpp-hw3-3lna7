@@ -16,7 +16,7 @@ class ArticleEdit extends Component {
         this.getData()
     }
     getData() {
-        fetch("http://localhost:3001/articles/" + this.props.match.params.id).then(
+        fetch("http://localhost:3000/articles/" + this.props.match.params.id).then(
             (response) => {
                 response.json().then(
                     (result) => {
@@ -32,7 +32,7 @@ class ArticleEdit extends Component {
         )
     }
     edit() {
-        fetch("http://localhost:3001/articles/" + this.state.id, {
+        fetch("http://localhost:3000/articles/" + this.state.id, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -45,8 +45,7 @@ class ArticleEdit extends Component {
         })
     }
     delete(id) {
-        // alert('deleted')
-        fetch("http://localhost:3001/articles/" + id, {
+        fetch("http://localhost:3000/articles/" + id, {
             method: "DELETE",
             body: JSON.stringify(this.state)
         }).then((result) => {

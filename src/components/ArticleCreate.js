@@ -12,7 +12,7 @@ class ArticleCreate extends Component {
         }
     }
     create() {
-        fetch("http://localhost:3001/articles", {
+        fetch("http://localhost:3000/articles", {
             method: "Post",
             headers: {
                 'Content-Type': 'application/json'
